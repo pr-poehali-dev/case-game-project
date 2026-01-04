@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -20,6 +20,16 @@ interface CaseType {
   image: string;
   rarity: 'common' | 'rare' | 'epic' | 'legendary';
   items: Item[];
+}
+
+interface Achievement {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  requirement: number;
+  reward: number;
+  unlocked: boolean;
 }
 
 const cases: CaseType[] = [
@@ -98,6 +108,71 @@ export default function Index() {
   const [inventory, setInventory] = useState<Item[]>([]);
   const [isOpening, setIsOpening] = useState(false);
   const [wonItem, setWonItem] = useState<Item | null>(null);
+  const [lastBonusDate, setLastBonusDate] = useState<string | null>(null);
+  const [canClaimBonus, setCanClaimBonus] = useState(true);
+  const [achievements, setAchievements] = useState<Achievement[]>([
+    { id: '1', name: 'Первые шаги', description: 'Открыть 1 кейс', icon: '🎯', requirement: 1, reward: 200, unlocked: false },
+    { id: '2', name: 'Коллекционер', description: 'Открыть 10 кейсов', icon: '📚', requirement: 10, reward: 1000, unlocked: false },
+    { id: '3', name: 'Охотник за удачей', description: 'Открыть 25 кейсов', icon: '🎲', requirement: 25, reward: 2500, unlocked: false },
+    { id: '4', name: 'Легенда', description: 'Получить 5 легендарных предметов', icon: '⭐', requirement: 5, reward: 5000, unlocked: false },
+    { id: '5', name: 'Золотая лихорадка', description: 'Получить 3 золотых предмета', icon: '🏆', requirement: 3, reward: 10000, unlocked: false },
+  ]);
+
+  useEffect(() => {
+    const storedDate = localStorage.getItem('lastBonusDate');
+    setLastBonusDate(storedDate);
+    
+    if (storedDate) {
+      const lastDate = new Date(storedDate);
+      const today = new Date();
+      const isSameDay = lastDate.toDateString() === today.toDateString();
+      setCanClaimBonus(!isSameDay);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkAchievements();
+  }, [inventory]);
+
+  const claimDailyBonus = () => {
+    const bonusAmount = 500;
+    setBalance(balance + bonusAmount);
+    const today = new Date().toISOString();
+    setLastBonusDate(today);
+    localStorage.setItem('lastBonusDate', today);
+    setCanClaimBonus(false);
+    toast.success(`Получен ежедневный бонус: ${bonusAmount} монет!`);
+  };
+
+  const checkAchievements = () => {
+    const updatedAchievements = [...achievements];
+    let hasNewAchievement = false;
+
+    updatedAchievements.forEach((achievement) => {
+      if (!achievement.unlocked) {
+        let progress = 0;
+        
+        if (achievement.id === '1' || achievement.id === '2' || achievement.id === '3') {
+          progress = inventory.length;
+        } else if (achievement.id === '4') {
+          progress = inventory.filter((i) => i.rarity === 'legendary').length;
+        } else if (achievement.id === '5') {
+          progress = inventory.filter((i) => i.rarity === 'gold').length;
+        }
+
+        if (progress >= achievement.requirement) {
+          achievement.unlocked = true;
+          hasNewAchievement = true;
+          setBalance((prev) => prev + achievement.reward);
+          toast.success(`Достижение разблокировано: ${achievement.name}! +${achievement.reward} монет`);
+        }
+      }
+    });
+
+    if (hasNewAchievement) {
+      setAchievements(updatedAchievements);
+    }
+  };
 
   const openCase = (caseItem: CaseType) => {
     if (balance < caseItem.price) {
