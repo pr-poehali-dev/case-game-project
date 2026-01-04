@@ -214,8 +214,30 @@ export default function Index() {
           </Card>
         </header>
 
+        {canClaimBonus && (
+          <Card className="p-6 bg-gradient-to-r from-accent/20 via-secondary/20 to-primary/20 border-accent/50 mb-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="text-5xl animate-bounce-in">🎁</div>
+                <div>
+                  <h3 className="text-xl font-bold">Ежедневный бонус</h3>
+                  <p className="text-muted-foreground">Получи 500 монет прямо сейчас!</p>
+                </div>
+              </div>
+              <Button
+                onClick={claimDailyBonus}
+                size="lg"
+                className="bg-gradient-to-r from-accent to-secondary hover:from-accent/90 hover:to-secondary/90 text-lg"
+              >
+                <Icon name="Gift" size={20} className="mr-2" />
+                Забрать бонус
+              </Button>
+            </div>
+          </Card>
+        )}
+
         <Tabs defaultValue="shop" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 bg-card/50 backdrop-blur">
+          <TabsList className="grid w-full grid-cols-4 bg-card/50 backdrop-blur">
             <TabsTrigger value="shop" className="data-[state=active]:bg-primary">
               <Icon name="Store" size={20} className="mr-2" />
               Магазин
@@ -223,6 +245,10 @@ export default function Index() {
             <TabsTrigger value="inventory" className="data-[state=active]:bg-primary">
               <Icon name="Backpack" size={20} className="mr-2" />
               Инвентарь ({inventory.length})
+            </TabsTrigger>
+            <TabsTrigger value="achievements" className="data-[state=active]:bg-primary">
+              <Icon name="Trophy" size={20} className="mr-2" />
+              Достижения
             </TabsTrigger>
             <TabsTrigger value="profile" className="data-[state=active]:bg-primary">
               <Icon name="User" size={20} className="mr-2" />
@@ -345,6 +371,76 @@ export default function Index() {
                 ))}
               </div>
             )}
+          </TabsContent>
+
+          <TabsContent value="achievements" className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {achievements.map((achievement) => {
+                let progress = 0;
+                if (achievement.id === '1' || achievement.id === '2' || achievement.id === '3') {
+                  progress = inventory.length;
+                } else if (achievement.id === '4') {
+                  progress = inventory.filter((i) => i.rarity === 'legendary').length;
+                } else if (achievement.id === '5') {
+                  progress = inventory.filter((i) => i.rarity === 'gold').length;
+                }
+                const progressPercent = Math.min((progress / achievement.requirement) * 100, 100);
+
+                return (
+                  <Card
+                    key={achievement.id}
+                    className={`p-6 transition-all ${
+                      achievement.unlocked
+                        ? 'bg-gradient-to-br from-accent/30 to-accent/10 border-accent/50'
+                        : 'bg-card/50 border-muted'
+                    }`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div
+                        className={`text-5xl ${
+                          achievement.unlocked ? 'animate-bounce-in' : 'grayscale opacity-50'
+                        }`}
+                      >
+                        {achievement.icon}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-start justify-between mb-2">
+                          <div>
+                            <h3 className="text-xl font-bold mb-1">{achievement.name}</h3>
+                            <p className="text-sm text-muted-foreground">{achievement.description}</p>
+                          </div>
+                          {achievement.unlocked && (
+                            <Badge className="bg-accent text-white">
+                              <Icon name="Check" size={16} className="mr-1" />
+                              Получено
+                            </Badge>
+                          )}
+                        </div>
+                        
+                        <div className="space-y-2 mt-4">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-muted-foreground">Прогресс</span>
+                            <span className="font-semibold">
+                              {progress} / {achievement.requirement}
+                            </span>
+                          </div>
+                          <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+                            <div
+                              className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500"
+                              style={{ width: `${progressPercent}%` }}
+                            ></div>
+                          </div>
+                          <div className="flex items-center gap-1 text-accent font-semibold">
+                            <Icon name="Award" size={16} />
+                            <span>Награда: {achievement.reward} монет</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
           </TabsContent>
 
           <TabsContent value="profile" className="space-y-6">
