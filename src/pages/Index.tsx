@@ -40,10 +40,10 @@ const cases: CaseType[] = [
     image: '📦',
     rarity: 'common',
     items: [
-      { id: '1', name: 'Бронзовая монета', rarity: 'common', image: '🪙' },
-      { id: '2', name: 'Деревянный меч', rarity: 'common', image: '🗡️' },
-      { id: '3', name: 'Зелье здоровья', rarity: 'rare', image: '🧪' },
-      { id: '4', name: 'Магический кристалл', rarity: 'epic', image: '💎' },
+      { id: '1', name: 'Бронзовый тюлень', rarity: 'common', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/ade03c2a-54b2-470f-9fd6-9448cc0aff3e.jpg' },
+      { id: '2', name: 'Тюлень-воин', rarity: 'common', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/2e3c2fc5-c759-4067-b52a-fca827ed5709.jpg' },
+      { id: '3', name: 'Целитель-тюлень', rarity: 'rare', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/d00ccd55-ab20-44a9-a5f6-d5d697c8ad2d.jpg' },
+      { id: '4', name: 'Магический тюлень', rarity: 'epic', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/ece0a64c-6f9e-4209-8c01-e99e6d49245d.jpg' },
     ],
   },
   {
@@ -53,10 +53,10 @@ const cases: CaseType[] = [
     image: '🎁',
     rarity: 'rare',
     items: [
-      { id: '5', name: 'Серебряное кольцо', rarity: 'rare', image: '💍' },
-      { id: '6', name: 'Огненный посох', rarity: 'epic', image: '🔥' },
-      { id: '7', name: 'Драконья чешуя', rarity: 'legendary', image: '🐉' },
-      { id: '8', name: 'Золотой слиток', rarity: 'gold', image: '🏆' },
+      { id: '5', name: 'Тюлень с кольцом', rarity: 'rare', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/81950ac7-7d19-4453-96ef-576aff793754.jpg' },
+      { id: '6', name: 'Огненный тюлень', rarity: 'epic', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/abfd6510-14e3-44c1-b5d1-606b199670d6.jpg' },
+      { id: '7', name: 'Драконий тюлень', rarity: 'legendary', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/3b58234d-6496-401c-a878-01d8214dbd12.jpg' },
+      { id: '8', name: 'Золотой тюлень', rarity: 'gold', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/17995cfa-4432-4027-88e9-658144da9c2a.jpg' },
     ],
   },
   {
@@ -66,10 +66,10 @@ const cases: CaseType[] = [
     image: '✨',
     rarity: 'epic',
     items: [
-      { id: '9', name: 'Королевская корона', rarity: 'epic', image: '👑' },
-      { id: '10', name: 'Легендарный щит', rarity: 'legendary', image: '🛡️' },
-      { id: '11', name: 'Магический артефакт', rarity: 'legendary', image: '🔮' },
-      { id: '12', name: 'Джекпот', rarity: 'gold', image: '💰' },
+      { id: '9', name: 'Королевский тюлень', rarity: 'epic', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/35f64fcd-4ed2-465d-97b6-c707013a3edd.jpg' },
+      { id: '10', name: 'Тюлень-защитник', rarity: 'legendary', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/b318a87b-1a2d-40d3-80fa-93dbff8c2777.jpg' },
+      { id: '11', name: 'Мистический тюлень', rarity: 'legendary', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/516c37d6-0784-4314-8ae9-32f3f5b1d651.jpg' },
+      { id: '12', name: 'Джекпот-тюлень', rarity: 'gold', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/ba8ded99-de39-4cb3-8695-0d35687df1aa.jpg' },
     ],
   },
   {
@@ -79,10 +79,10 @@ const cases: CaseType[] = [
     image: '🌟',
     rarity: 'legendary',
     items: [
-      { id: '13', name: 'Звездный меч', rarity: 'legendary', image: '⚔️' },
-      { id: '14', name: 'Крылья феникса', rarity: 'legendary', image: '🦅' },
-      { id: '15', name: 'Космический кристалл', rarity: 'gold', image: '🌌' },
-      { id: '16', name: 'Супер Джекпот', rarity: 'gold', image: '🎰' },
+      { id: '13', name: 'Звездный тюлень', rarity: 'legendary', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/22fde086-6992-4209-975f-8a832cc7f875.jpg' },
+      { id: '14', name: 'Тюлень-феникс', rarity: 'legendary', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/a2a1c934-a811-4a4b-9691-3116723cc153.jpg' },
+      { id: '15', name: 'Космический тюлень', rarity: 'gold', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/11ef2175-a6ba-4381-bc3d-55c8beccc3be.jpg' },
+      { id: '16', name: 'Супер джекпот-тюлень', rarity: 'gold', image: 'https://cdn.poehali.dev/projects/936770e2-cefa-47b3-b44e-9b2d8433fc38/files/a77c2520-998b-4e02-9cae-1c08e6a50ac4.jpg' },
     ],
   },
 ];
@@ -104,7 +104,7 @@ const rarityLabels = {
 };
 
 export default function Index() {
-  const [balance, setBalance] = useState(10000);
+  const [balance, setBalance] = useState(200);
   const [inventory, setInventory] = useState<Item[]>([]);
   const [isOpening, setIsOpening] = useState(false);
   const [wonItem, setWonItem] = useState<Item | null>(null);
@@ -259,10 +259,18 @@ export default function Index() {
           <TabsContent value="shop" className="space-y-6">
             {isOpening && (
               <Card className="p-12 text-center bg-gradient-to-br from-primary/20 to-secondary/20 border-primary/50">
-                <div className="relative mx-auto w-32 h-32 mb-6">
+                <div className="relative mx-auto w-48 h-48 mb-6">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent rounded-full animate-spin-slow opacity-50 blur-xl"></div>
-                  <div className="relative flex items-center justify-center w-full h-full text-6xl animate-pulse-glow">
-                    {wonItem ? wonItem.image : '📦'}
+                  <div className="relative flex items-center justify-center w-full h-full animate-pulse-glow">
+                    {wonItem ? (
+                      wonItem.image.startsWith('http') ? (
+                        <img src={wonItem.image} alt={wonItem.name} className="w-full h-full object-cover rounded-lg" />
+                      ) : (
+                        <span className="text-6xl">{wonItem.image}</span>
+                      )
+                    ) : (
+                      <span className="text-6xl">📦</span>
+                    )}
                   </div>
                 </div>
                 <h3 className="text-2xl font-bold">
@@ -356,7 +364,11 @@ export default function Index() {
                       background: `linear-gradient(135deg, ${rarityColors[item.rarity]}10, transparent)`,
                     }}
                   >
-                    <div className="text-5xl mb-2">{item.image}</div>
+                    {item.image.startsWith('http') ? (
+                      <img src={item.image} alt={item.name} className="w-full h-24 object-cover rounded-lg mb-2" />
+                    ) : (
+                      <div className="text-5xl mb-2">{item.image}</div>
+                    )}
                     <p className="font-semibold text-sm mb-1">{item.name}</p>
                     <Badge
                       className="text-xs"
